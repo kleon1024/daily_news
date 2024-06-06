@@ -2,6 +2,7 @@ import time
 import Agently
 from .tools.search import search
 from .tools.browse import browse
+from datetime import datetime, timedelta
 
 def start(column_outline, *, agent_factory, SETTINGS, root_path, logger):
     logger.info("[Start Generate Column]", column_outline["column_title"])
@@ -21,11 +22,14 @@ def start(column_outline, *, agent_factory, SETTINGS, root_path, logger):
 
     @column_workflow.chunk("search")
     def search_executor(inputs, storage):
+        keyword = column_outline["search_keywords"].replace("2024-06-05", f"{(datetime.today() - timedelta(days=1)).strftime('%Y-%m-%d')}")
+        print(f'searching {keyword}')
         storage.set(
             "searched_news",
             search(
-                column_outline["search_keywords"],
-                proxy=SETTINGS.PROXY if hasattr(SETTINGS, "PROXY") else None
+                keyword,
+                proxy=SETTINGS.PROXY if hasattr(SETTINGS, "PROXY") else None,
+                max_results=SETTINGS.MAX_SEARCH_RESULTS
             )
         )
 
@@ -124,6 +128,8 @@ def start(column_outline, *, agent_factory, SETTINGS, root_path, logger):
             final_news_list = []
             for news in column_result["news_list"]:
                 id = news["id"]
+                if id > len(readed_news):
+                    continue
                 final_news_list.append({
                     "url": readed_news[id]["url"],
                     "title": readed_news[id]["title"],

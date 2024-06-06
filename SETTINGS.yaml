@@ -1,30 +1,45 @@
 # Debug Settings
 IS_DEBUG: false
 # Proxy Settings
-#PROXY: http://127.0.0.1:7890
+# PROXY: 
 # Model Settings
 MODEL_PROVIDER: OAIClient
-#MODEL_URL: 
+MODEL_URL: http://127.0.0.1:9997/v1
 MODEL_AUTH:
-  api_key: "<Input Your API Key Here>"
+  api_key: nothing
 MODEL_OPTIONS:
-  model: gpt-3.5-turbo
+  model: qwen1.5-chat
+  temperature: 0.1
 # Application Settings
-MAX_COLUMN_NUM: 3
-OUTPUT_LANGUAGE: English
-MAX_SEARCH_RESULTS: 8
+MAX_COLUMN_NUM: 8
+OUTPUT_LANGUAGE: Chinese
+MAX_SEARCH_RESULTS: 16
 SLEEP_TIME: 5
 # Outline Settings
-USE_CUSTOMIZE_OUTLINE: false
+USE_CUSTOMIZE_OUTLINE: true
 CUSTOMIZE_OUTLINE:
-  report_title: "Today's News about Large Model Applications"
+  report_title: "今日科技要闻"
   column_list:
-    - column_title: New Apps
-      column_requirement: Looking for those applications powered by large models which announced recently
-      search_keywords: large model application announce this week
-    - column_title: Hot Apps
-      column_requirement: Looking for those applications powered by large models which are most popular or are discussed most
-      search_keywords: large model application popular hot 
-    - column_title: Fun Apps
-      column_requirement: Looking for those applications powered by large models which are funny or inspirational
-      search_keywords: large model application cool fun inspire
+    - column_title: 要闻速递
+      column_requirement: Provide the most significant and impactful tech news from the past 24 hours.
+      search_keywords: "top tech news"
+      
+    - column_title: AI动向
+      column_requirement: Cover the latest advancements in AI, including large models, top applications, and company news.
+      search_keywords: "AI applications"
+
+    - column_title: 程序员动态
+      column_requirement: Report on news relevant to programmers, including new open-source projects on GitHub and technical developments.
+      search_keywords: "programmer news OR open-source projects GitHub"
+
+    - column_title: 游戏新闻
+      column_requirement: Highlight the latest news in the gaming industry, including new releases, company updates, and tech developments.
+      search_keywords: "latest gaming news OR new game releases"
+
+    - column_title: 大厂科技
+      column_requirement: Provide news on major tech companies like Apple, Google, and other significant industry players.
+      search_keywords: "major tech company news"
+
+    - column_title: 电影音乐
+      column_requirement: Cover the latest news in the film and music industries, including new releases, industry updates, and technological advancements.
+      search_keywords: "latest film news OR music industry news"

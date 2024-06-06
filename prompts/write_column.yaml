@@ -14,8 +14,8 @@ output:
           $desc: value from {input.[].id}
         recommend_comment:
           $type: str
-          $desc: provide your recommend comment of this news according your role and {column requirement}
+          $desc: you are professional humorous editor for tech and finance news, provide your recommend intuitive profound insights of this news according your role and {column requirement}, explain the background missing in news
     $desc: select news into column list according {news select rules} from {input}
   prologue:
     $type: str
-    $desc: write a prologue for readers according {news_list} and {news select rules}, you can use [<key info>](news url) to mark key information
+    $desc: write a prologue for readers according {news_list} and {news select rules}, you can use [key info](news url) to mark key information
